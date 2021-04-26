@@ -3,33 +3,39 @@ import "../App.css";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import MovieComponent from "../Components/MovieComponent";
+import Paging from "../Components/Paging";
 import Search from "../Components/Search";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
+  const [number, setNumber] = useState(1);
+  const [totalPage, setTotalPage] = useState([]);
   const API = process.env.REACT_APP_API_KEY;
-
+  const movie = `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en_US&page=${number}&query=${search}`;
+  const popularMovie = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=en-US&page=${number}`;
   useEffect(() => {
     const getMovieRequest = async () => {
       let curURL = ``;
       if (search === "") {
-        curURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=en-US&page=1`;
+        curURL = popularMovie;
       } else {
-        curURL = `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en_US&query=${search}`;
+        curURL = movie;
       }
       const res = await fetch(curURL);
       const movies = await res.json();
+      setTotalPage(movies.total_pages);
       setMovies(movies.results);
     };
     getMovieRequest();
-  }, [search]);
+  }, [number, search, popularMovie, movie]);
 
   return (
     <div className="App">
       <Header />
-      <Search setSearch={setSearch} search={search} />
+      <Search setSearch={setSearch} />
       <MovieComponent movies={movies} />
+      <Paging setNumber={setNumber} totalPage={totalPage} />
       <Footer />
     </div>
   );

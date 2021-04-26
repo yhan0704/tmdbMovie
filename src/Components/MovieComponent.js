@@ -10,6 +10,7 @@ export default function MovieComponent({ movies }) {
     color: white;
     display: flex;
     width: 100%;
+    height: 70%;
     justify-content: center;
     flex-wrap: wrap;
   `;
