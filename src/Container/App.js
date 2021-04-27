@@ -1,42 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../App.css";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
-import MovieComponent from "../Components/MovieComponent";
-import Paging from "../Components/Paging";
-import Search from "../Components/Search";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navigation from "../Components/Navigation";
+import ForGF from "../Components/ForGF";
+import MainPage from "../Components/MainPage";
 function App() {
-  const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState("");
-  const [number, setNumber] = useState(1);
-  const [totalPage, setTotalPage] = useState([]);
-  const API = process.env.REACT_APP_API_KEY;
-  const movie = `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en_US&page=${number}&query=${search}`;
-  const popularMovie = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=en-US&page=${number}`;
-  useEffect(() => {
-    const getMovieRequest = async () => {
-      let curURL = ``;
-      if (search === "") {
-        curURL = popularMovie;
-      } else {
-        curURL = movie;
-      }
-      const res = await fetch(curURL);
-      const movies = await res.json();
-      setTotalPage(movies.total_pages);
-      setMovies(movies.results);
-    };
-    getMovieRequest();
-  }, [number, search, popularMovie, movie]);
-
   return (
     <div className="App">
-      <Header />
-      <Search setSearch={setSearch} />
-      <MovieComponent movies={movies} />
-      <Paging setNumber={setNumber} totalPage={totalPage} />
-      <Footer />
+      <Router>
+        <Header />
+        <Navigation />
+        <Switch>
+          <Route path="/" exact component={MainPage}></Route>
+          <Route path="/romance" component={ForGF}></Route>
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }

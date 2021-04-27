@@ -7,11 +7,11 @@ export default function Movies(props) {
   return (
     <div className="moviesBox">
       <div className="card">
-        <h1>
-          {movie.original_title.length > 6
-            ? movie.original_title.slice(0, 6) + "..."
+        <h2>
+          {movie.original_title.length > 10
+            ? movie.original_title.slice(0, 13) + "..."
             : movie.original_title}
-        </h1>
+        </h2>
         <br />
         {movie.poster_path === null ? (
           <img src={cantFind} alt="can't find" />
