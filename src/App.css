@@ -9,15 +9,18 @@ img{
 }
 
 .header{
+    padding:2% 0;
     text-align: center;
     font-size: 3rem;
-    color: lightblue;
-    background-color: lightseagreen;
+    color: black;
+    background-color: lightgrey;
 }
 
 .navBox{
+    background-color: dimgray;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .navBox li{
@@ -25,19 +28,31 @@ img{
     padding:1.2rem;
 }
 
-.navBox li a{
-    color:black;
+.navBox li:hover{
+background-color: gray;
+}
+
+.navBox a {
     text-decoration: none;
+}
+.navBox a li {
+    color:white;
+    font-weight: bolder;
+}
+
+.navBox a li:hover{
+    color:lightskyblue;
 }
 
 .searchBox{
-    background-color: lightslategray;
+    background-color: dimgrey;
     padding:1.5rem;
     text-align: center;
     
 }
 
 .searchBox input{
+    width: 200px;
     height: 2rem;
     margin-right: 1rem;
     border-radius: 5%;
@@ -71,7 +86,26 @@ img{
 .footer{
     padding:3rem;
     text-align: center;
-    font-size: 3rem;
-    color: lightblue;
-    background-color: lightseagreen;
+    font-size: 2rem;
+    color: rgb(1, 13, 17);
+    background-color:lightgray;
+}
+
+.footerReserved{
+    font-size: 1.3rem;
+    padding-top:3%;
+}
+
+@media only screen and (max-width: 700px) {
+    .header{
+        font-size: 2rem;
+    }
+    .footer{
+        padding:2rem;
+        font-size: 1.2rem;
+    }
+    .footerReserved{
+        font-size: 1rem;
+        padding-top:3%;
+    }
 }
