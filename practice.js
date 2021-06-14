@@ -60,7 +60,7 @@ export default function Mainpage() {
   }, []);
 
   // const onClick = () => {
-  //   sessionStorage.setItem("scrollPosition", window.pageYOffset);
+  // sessionStorage.setItem("scrollPosition", window.pageYOffset);
   //   // fetchingNextMovie();
   // };
 

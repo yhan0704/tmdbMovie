@@ -2,25 +2,30 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import MovieComponent from "../Components/MovieComponent";
 import Paging from "./Paging";
-const API = process.env.REACT_APP_API_KEY;
+import Search from "../Components/Search";
 
-// import Search from "../Components/Search";
+const API = process.env.REACT_APP_API_KEY;
 
 export default function Mainpage() {
   const [movies, setMovies] = useState([]);
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [number, setNumber] = useState(1);
   const [totalPage, setTotalPage] = useState([]);
 
-  // const movie = `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en_US&page=${number}&query=${search}`;
-
   useEffect(() => {
-    const popularMovie = `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=en-US&page=${number}`;
-    fetchdata(popularMovie);
+    //remove prev movies(used for when search is true or false)
+    setMovies([]);
+    let movie = ``;
+    if (search === "") {
+      movie += `https://api.themoviedb.org/3/movie/popular?api_key=${API}&language=en-US&page=${number}`;
+    } else {
+      movie += `https://api.themoviedb.org/3/search/movie?api_key=${API}&language=en_US&page=${number}&query=${search}`;
+    }
+    fetchdata(movie);
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [API, number]);
+  }, [API, number, search]);
 
   const fetchdata = async (endpOint) => {
     const res = await axios.get(endpOint);
@@ -33,9 +38,8 @@ export default function Mainpage() {
 
   return (
     <div>
-      {/* <Search setSearch={setSearch} /> */}
+      <Search setSearch={setSearch} />
       <MovieComponent movies={movies} />
-
       {loading ? (
         "..laoding"
       ) : (
