@@ -1,0 +1,27 @@
+// import React from "react";
+// import cantFind from "../image/cant_find.jpg";
+
+// export default function Movies(props) {
+//   const { movie } = props;
+//   const apiImageAddress = "http://image.tmdb.org/t/p/";
+//   return (
+//     <div className="moviesBox">
+//       <div className="card">
+//         <h2>
+//           {movie.original_title.length > 10
+//             ? movie.original_title.slice(0, 13) + "..."
+//             : movie.original_title}
+//         </h2>
+//         <br />
+//         {movie.poster_path === null ? (
+//           <img src={cantFind} alt="can't find" />
+//         ) : (
+//           <img
+//             src={`${apiImageAddress}w154${movie.poster_path}`}
+//             alt={movie.name}
+//           />
+//         )}
+//       </div>
+//     </div>
+//   );
+// }

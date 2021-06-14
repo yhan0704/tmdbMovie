@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function MovieComponent({ movies }) {
   const Wrap = styled.div`
     padding-top: 4%;
-    padding-bottom: 4%;
+    /* padding-bottom: 4%; */
     background: black;
     color: white;
     display: flex;

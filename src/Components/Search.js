@@ -7,7 +7,6 @@ export default function Search(props) {
         onChange={(e) => props.setSearch(e.target.value)}
         placeholder="Find Your Movies...."
       />
-      <button className="button">Search</button>
     </div>
   );
 }
