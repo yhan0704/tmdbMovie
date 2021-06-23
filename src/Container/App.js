@@ -10,7 +10,7 @@ import Action from "../Components/genres/Action";
 import Mystery from "../Components/genres/Mystery";
 import Horror from "../Components/genres/Horror";
 import Comedy from "../Components/genres/Comedy";
-import Search from "antd/lib/transfer/search";
+import DetailPage from "../Components/DetailPage";
 function App() {
   return (
     <div className="App">
@@ -24,7 +24,7 @@ function App() {
           <Route path="/mystery" component={Mystery} />
           <Route path="/horror" component={Horror} />
           <Route path="/comedy" component={Comedy} />
-          <Route path="/search" component={Search} />
+          <Route path="/:id" component={DetailPage} />
         </Switch>
         <Footer />
       </Router>

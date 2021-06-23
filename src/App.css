@@ -26,6 +26,10 @@ button{
     background-color: lightgrey;
 }
 
+a{
+    text-decoration: none;
+}
+
 .navBox{
     background-color: dimgray;
     display: flex;
@@ -42,9 +46,6 @@ button{
 background-color: gray;
 }
 
-.navBox a {
-    text-decoration: none;
-}
 .navBox a li {
     color:white;
     font-weight: bolder;
@@ -86,6 +87,7 @@ background-color: gray;
 
 .appearHover{
     position: relative;
+    display: inline-block;
 }
 
 .imageDesc{
@@ -110,10 +112,119 @@ background-color: gray;
 .appearHover:hover .imageDesc{
     visibility: visible;
     opacity: 1;
+    
 }
 
 .spacePtag{
     margin: 10% 0;
+}
+
+.moviesBox .appearHover a{
+    color:white;
+    border-radius: 50%;
+    position: absolute;
+    bottom:30%;
+    margin-top: 5%;
+    margin-left: 20%;
+    display: inline-block;
+    transition: all 0.5s;
+    border:1px solid white;
+    text-align: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    padding:2% 12%;
+    cursor: pointer;
+}
+
+.moviesBox .appearHover a:active{
+    transform: scale(1%);
+}
+
+.moviesBox .appearHover a:hover{
+    color: peachpuff;
+}
+
+
+.watchBtn{
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    border:1px solid white;
+    border-radius: 50%;
+    padding:2% 12%;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.5s;
+}
+
+.watchBtn:active{
+    transform: scale(1%);
+}
+
+.watchBtn:hover{
+    color: peachpuff;
+}
+
+
+/* detail */
+.midContainer{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin:0 5%;
+}
+
+.detailLeft{
+    position: relative;
+    margin-right: 3%;
+}
+
+.detailRight{
+    display: flex;
+    flex-direction: column;
+}
+
+.detailRight h1{
+    font-family: cursive;
+    padding-bottom: 3%;
+    font-size: 30px;
+    line-height: 1.2;
+
+}
+
+.detailRight p{
+    line-height: 1.6rem;
+    margin-bottom: 1%;
+}
+
+/* .midContainer .detailRight p{
+    line-height: 1.6rem;
+    margin-bottom: 1%;
+} */
+
+/* .midContainer h1{
+    font-family: cursive;
+    position: absolute;
+    top: 22%;
+    font-size: 30px;
+}
+
+.midContainer p{
+    line-height: 1.6rem;
+    margin-bottom: 1%;
+}
+
+.detailLeft{
+    position: relative;
+    margin-right: 1%;
+} */
+.voteAverage{
+    position: absolute;
+    top: -16px;
+    right: -13px;
+    border: 3px solid goldenrod;
+    border-radius: 50%;
 }
 
 /* end */
@@ -130,20 +241,91 @@ background-color: gray;
 
 .loadButton{
     text-align: center;
+    margin-bottom: 1.4rem;
 }
 
 .footer{
-    margin-top: 1.4rem;
     padding:3rem;
     text-align: center;
     font-size: 2rem;
     color: rgb(1, 13, 17);
     background-color:lightgray;
+    line-height: 1.5;
 }
 
 .footerReserved{
     font-size: 1.3rem;
     padding-top:3%;
+}
+
+/* youtube */
+
+.youTubeOverlay{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(26, 16, 1, 0.5);
+    
+}
+
+.youTubePanel{
+    position:fixed; 
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%); 
+    z-index: 9999;
+    width: 680px;
+}
+.video-responsive{
+    height: 400px;
+}
+
+.player-wrapper {
+    position: relative;
+    padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+@media only screen and (max-width: 870px){
+    .midContainer{
+        flex-direction: column;
+    }
+    .midContainer h1{
+        position: static;
+        padding-top:21px;
+        font-size: 1.3rem;
+    }
+    .midContainer .detailLeft p{
+        padding-top:0;
+    }
+    .detailLeft {
+        margin-right:0;
+    }
+    .detailLeft img{
+        height: 350px;
+    }
+
+    .midContainer p {
+        margin-bottom: 0;
+        padding-top:3%;
+    }
+    .detailRight{
+        padding-top: 3%;
+    }
+
+    .myVideo{
+        width:400px;
+        height: 300px;
+    }
 }
 
 @media only screen and (max-width: 760px) {
@@ -162,4 +344,11 @@ background-color: gray;
         font-size: 1rem;
         padding-top:3%;
     }
+    .youTubePanel{
+        width: 400px;
+    }
+    .video-responsive{
+        height: 300px;
+    }
+    
 }

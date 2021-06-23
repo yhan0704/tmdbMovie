@@ -41,7 +41,7 @@ export default function Mainpage() {
       <Search setSearch={setSearch} />
       <MovieComponent movies={movies} />
       {loading ? (
-        "..laoding"
+        <div style={{ textAlign: "center" }}>"..loading"</div>
       ) : (
         <Paging setNumber={setNumber} totalPage={totalPage} />
       )}

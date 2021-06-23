@@ -9,7 +9,7 @@ export default function Genre({ genreId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const popularMovie = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&language=en-US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
+    const popularMovie = `https://api.themoviedb.org/3/discover/movie?api_key=${API}&language=en-US&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=${number}&with_genres=${genreId}&with_watch_monetization_types=flatrate`;
     fetchdata(popularMovie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [API]);
@@ -17,7 +17,7 @@ export default function Genre({ genreId }) {
   const fetchdata = async (endpOint) => {
     const res = await axios.get(endpOint);
     const results = res.data;
-    setMovies([...movies, ...results.results]);
+    setMovies((prevMovies) => [...prevMovies, ...results.results]);
     setNumber(results.page);
     setLoading(false);
   };
@@ -34,7 +34,7 @@ export default function Genre({ genreId }) {
     <div>
       <MovieComponent movies={movies} />
       {loading ? (
-        "..laoding"
+        <div style={{ textAlign: "center" }}>...loading</div>
       ) : (
         <div className="loadButton" style={{ marginTop: "20px" }}>
           <button onClick={onClick}>Load More</button>
